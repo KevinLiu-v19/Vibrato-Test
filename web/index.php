@@ -1,5 +1,6 @@
 <html>
  <head>
+  <link rel="stylesheet" href="styles.css">
   <title>User Administration Page</title>
  </head>
  <body>
@@ -37,7 +38,7 @@
     $query = 'SELECT * From Users';
     $result = mysqli_query($conn, $query);
 
-    echo '<table><thead><tr>';
+    echo '<table align="center"><thead><tr>';
     echo '<th>userid</th>';
     echo '<th>name</th>';
     echo '</tr></thead>';
