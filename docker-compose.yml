@@ -11,3 +11,9 @@ services:
             - "3306:3306"
         volumes:
             - ./data:/docker-entrypoint-initdb.d
+    www:
+        build: .
+        ports: 
+            - "8001:80"
+        volumes:
+            - ./web:/var/www/html/
