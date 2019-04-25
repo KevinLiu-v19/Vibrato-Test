@@ -31,7 +31,9 @@
     }
 
     /* Query Users table and display results */
+    /* If the corresponding button is pressed, user is deleted from table */
     echo '<h2>Users List</h2>';
+    echo "<p>Click on a userid button to delete the user</p>";
     $query = 'SELECT * From Users';
     $result = mysqli_query($conn, $query);
 
@@ -41,10 +43,22 @@
     echo '</tr></thead>';
 
     while ($value = $result->fetch_array(MYSQLI_ASSOC)) {
-     echo '<tr><td>' . $value['userid'] . '</td>';
+     echo "<tr><td><input type='submit' class='button' name='delete' value='" . $value['userid'] . "' /></td>";
      echo '<td>' . $value['name'] . '</td></tr>';
     }
     echo '</table>';
+
+    if (isset($_POST['delete'])) {
+     $target = $_POST['delete'];
+     $deleteRow = "DELETE FROM Users WHERE userid = $target";
+
+     if($conn->query($deleteRow) === true) {
+      echo "<meta http-equiv='refresh' content='0'>";
+     } else {
+      echo "Failed to delete $target.";
+     }
+     echo "</form>";
+    }
    }
    mysqli_close($conn);
   ?>
