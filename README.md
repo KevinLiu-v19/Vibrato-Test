@@ -4,4 +4,4 @@
 Ubuntu 18.10
 
 ## Execution instructions
-- Run command `docker-compose up`
+- Run `docker-compose up` to start app
